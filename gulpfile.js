@@ -34,7 +34,6 @@ gulp.task('convert-locale-files', function(cb) {
   var src, targDir, target, execStr, index = 0;
   var supportedLocalesLength = supportedLocales.length - 1;
 
-
   _.each(supportedLocales, function(locale) {
     src     = __dirname + '/locales/' + locale + '.json';
     targDir = __dirname + '/build/locales/'
