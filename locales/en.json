@@ -1,0 +1,15 @@
+{
+  "module": {
+    "hello-name": "Hello {{name}}",
+    "days-of-week": "Days in week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.  Today is {{currentDay}}",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    }
+  }
+}
