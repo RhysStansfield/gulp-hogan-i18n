@@ -9,7 +9,7 @@ Pull the repo
 ```
 
 ```
-  $ gulp compile-i18n-templates
+  $ gulp templates-i18n
 ```
 
 Check out the /build directory - you will see compiled i18n templates per configured locale, as well as generated .po files for each locale
