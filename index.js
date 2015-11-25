@@ -58,7 +58,7 @@ app.get(mapRoutes('/test'), function(req, res) {
 app.get(mapRoutes('/weekdays'), function(req, res) {
   var d = new Date();
   var today = res.__(days[d.getDay()]);
-  var html = res.locals.templates.test2.render({ currentDay: today });
+  var html = res.locals.templates.weekdays.render({ currentDay: today });
 
   res.send(html);
 });
