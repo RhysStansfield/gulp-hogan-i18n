@@ -1,7 +1,7 @@
 {
   "module": {
     "hello-name": "Hallo {{name}}",
-    "days-of-week": "Tagen in der Woche: Montag, Dienstag , Mittwoch, Donnerstag , Freitag, Samstag , Sonntag. Heute ist {{currentDay}}",
+    "days-of-week": "Tagen in der Woche: Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag. Heute ist {{currentDay}}",
     "days": {
       "monday": "Montag",
       "tuesday": "Dienstag",
@@ -10,6 +10,7 @@
       "friday": "Freitag",
       "saturday": "Samstag",
       "sunday": "Sonntag"
-    }
+    },
+    "colour": "Farbe"
   }
 }

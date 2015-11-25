@@ -1,0 +1,16 @@
+{
+  "module": {
+    "hello-name": "Olá {{name}}",
+    "days-of-week": "Dias na semana: segunda, terça, quarta, quinta, sexta, sábado, domingo. Hoje é {{currentDay}}",
+    "days": {
+      "monday": "Segunda",
+      "tuesday": "Terça",
+      "wednesday": "Quarta",
+      "thursday": "Quinta",
+      "friday": "Sexta",
+      "saturday": "Sábado",
+      "sunday": "Domingo"
+    },
+    "colour": "cor"
+  }
+}

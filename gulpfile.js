@@ -17,7 +17,7 @@ var _       = require('lodash-node');
 var Gettext = require('node-gettext');
 var gt      = new Gettext();
 
-var supportedLocales = ['en', 'de'];
+var supportedLocales = require('./supportedLocales');
 
 gulp.task('compile-i18n-templates', ['convert-locale-files', 'normalize-po-files'], function() {
   configureGettext();
@@ -61,13 +61,12 @@ gulp.task('normalize-po-files', ['convert-locale-files'], function() {
 gulp.task('templates-i18n', ['convert-locale-files', 'compile-i18n-templates']);
 
 function configureGettext() {
-  var fileContents = {
-    en: fs.readFileSync(__dirname + '/build/locales/en.po'),
-    de: fs.readFileSync(__dirname + '/build/locales/de.po')
-  };
+  var fileContent;
 
-  _.each(fileContents, function(fileCont, locale) {
-    gt.addTextdomain(locale, fileCont);
+  _.each(supportedLocales, function(locale) {
+    fileContent = fs.readFileSync(__dirname + '/build/locales/' + locale + '.po');
+
+    gt.addTextdomain(locale, fileContent);
   });
 }
 

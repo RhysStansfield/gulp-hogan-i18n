@@ -1,0 +1,16 @@
+{
+  "module": {
+    "hello-name": "Bonjour {{name}}",
+    "days-of-week": "Jours dans la semaine: lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche. Aujourd'hui c'est {{currentDay}}",
+    "days": {
+      "monday": "Lundi",
+      "tuesday": "Mardi",
+      "wednesday": "Mercredi",
+      "thursday": "Jeudi",
+      "friday": "Vendredi",
+      "saturday": "Samedi",
+      "sunday": "Dimanche"
+    },
+    "colour": "couleur"
+  }
+}

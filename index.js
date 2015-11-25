@@ -3,9 +3,12 @@
 var express = require('express');
 var app     = express();
 var i18n    = require('i18n');
+var _       = require('lodash-node');
+
+var supportedLocales = require('./supportedLocales');
 
 i18n.configure({
-  locales:       ['en', 'de'],
+  locales:       supportedLocales,
   defaultLocale: 'en',
   directory:      __dirname + '/locales',
   objectNotation: true
@@ -21,12 +24,19 @@ var days = [
   'module.days.saturday'
 ];
 
+var storeCodeToLocale = {
+  'uk': 'en-UK',
+  'de': 'de',
+  'au': 'en-AU',
+  'us': 'en-US',
+  'pt': 'pt',
+  'fr': 'fr',
+  'es': 'es',
+  'ie': 'en-UK'
+}
+
 function setLocale(req, res, next) {
-  if (req.params.store_code === 'de') {
-    req.setLocale('de');
-  } else {
-    req.setLocale('en');
-  }
+  req.setLocale(storeCodeToLocale[req.params.store_code] || 'en');
 
   next();
 }
@@ -40,8 +50,9 @@ function setTemplates(req, res, next) {
 }
 
 function mapRoutes(route) {
+  var storesStr = _.keys(storeCodeToLocale).join('|');
   // Determine uk|de etc from store JSON
-  return ['/:store_code(uk|de)' + route, route];
+  return ['/:store_code(' + storesStr + ')' + route, route];
 }
 
 // configure middlewares
