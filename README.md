@@ -20,9 +20,9 @@ Try the app out:
   $ node index.js
 ```
 
-Visit localhost:3005/test, localhost:3005/de/test, localhost:3005/weekdays & localhost:3005/de/weekdays to see the pre-compiled templates being rendered in different languages.
+Visit localhost:3005 to see a list of the available stores and move between them, then try out the pages links at the bottom of the page and click around between pages and returning to the home page.
 
-Current variants you can try are:
+Current stores you can try are:
 
 * uk
 * de

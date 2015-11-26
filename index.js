@@ -35,6 +35,12 @@ var storeCodeToLocale = {
   'ie': 'en-UK'
 }
 
+function setStore(req, res, next) {
+  res.locals.store = req.params.store_code;
+
+  next();
+}
+
 function setLocale(req, res, next) {
   req.setLocale(storeCodeToLocale[req.params.store_code] || 'en');
 
@@ -51,25 +57,35 @@ function setTemplates(req, res, next) {
 
 function mapRoutes(route) {
   var storesStr = _.keys(storeCodeToLocale).join('|');
-  // Determine uk|de etc from store JSON
+
   return ['/:store_code(' + storesStr + ')' + route, route];
 }
 
 // configure middlewares
 app.use(i18n.init);
+app.use(mapRoutes('/*'), setStore);
 app.use(mapRoutes('/*'), setLocale);
 app.use(mapRoutes('/*'), setTemplates);
 
-app.get(mapRoutes('/test'), function(req, res) {
-  var html = res.locals.templates.test.render({ name: 'Derp' });
+app.get(mapRoutes('/'), function(req, res) {
+  var html = res.locals.templates.index.render({
+    availableStores: _.keys(storeCodeToLocale),
+    store:           res.locals.store
+  });
+
+  res.send(html);
+});
+
+app.get(mapRoutes('/hello'), function(req, res) {
+  var html = res.locals.templates.hello.render({ name: 'Derp', store: res.locals.store });
 
   res.send(html);
 });
 
 app.get(mapRoutes('/weekdays'), function(req, res) {
-  var d = new Date();
+  var d     = new Date();
   var today = res.__(days[d.getDay()]);
-  var html = res.locals.templates.weekdays.render({ currentDay: today });
+  var html  = res.locals.templates.weekdays.render({ currentDay: today, store: res.locals.store });
 
   res.send(html);
 });

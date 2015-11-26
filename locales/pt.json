@@ -1,5 +1,6 @@
 {
   "module": {
+    "hello": "Olá",
     "hello-name": "Olá {{name}}",
     "days-of-week": "Dias na semana: segunda, terça, quarta, quinta, sexta, sábado, domingo. Hoje é {{currentDay}}",
     "days": {
@@ -11,6 +12,10 @@
       "saturday": "Sábado",
       "sunday": "Domingo"
     },
-    "colour": "cor"
+    "weekdays": "Dias de semana",
+    "colour": "cor",
+    "available-stores": "Lojas Disponíveis",
+    "pages": "Páginas",
+    "home": "Casa"
   }
 }
