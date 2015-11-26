@@ -31,3 +31,11 @@ Current stores you can try are:
 * pt
 * au
 * ie
+
+Try adding a store translating to another language if you like - just do the following:
+
+1. Create a new json file for your locale in the locales dir
+2. Add the locale to `supportedLocales.js`
+3. Add the mapping between store code and locale in `index.js` in the `storeCodeToLocale` object
+4. Run `gulp templates-i18n`
+4. Restart the server
