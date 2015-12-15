@@ -5,28 +5,55 @@ var rename    = require('gulp-rename');
 var hogani18n = require('hogan-i18n');
 var es        = require('event-stream');
 var fs        = require('fs');
-var templates = __dirname + '/templates/**/*.html';
 var through   = require('through');
 var path      = require('path');
 var gutil     = require('gulp-util');
 var File      = gutil.File;
 var exec      = require('child_process').exec;
 var replace   = require('gulp-replace');
+var sass      = require('gulp-sass');
+var path      = require("path");
+
+var themes          = ['red', 'blue'];
+var templatesDir    = __dirname + '/templates';
+var sharedPages     = templatesDir + '/shared/pages/**/*.html';
+var sharedPartials  = templatesDir + '/shared/partials/**/*.html';
+var sharedTemplates = {
+  pages:    sharedPages,
+  partials: sharedPartials
+};
 
 var _       = require('lodash-node');
 var Gettext = require('node-gettext');
 var gt      = new Gettext();
 
+
 var supportedLocales = require('./supportedLocales');
+
+gulp.task('sass', function() {
+  gulp.src(__dirname + '/styles/**/*.scss')
+      .pipe(sass())
+      .pipe(rename({ basename: 'app' }))
+      .pipe(gulp.dest(__dirname + '/build/css'));
+});
 
 gulp.task('compile-i18n-templates', ['convert-locale-files', 'normalize-po-files'], function() {
   configureGettext();
 
-  _.each(supportedLocales, function(locale) {
-    gulp.src(templates)
-        .pipe(compiler(locale))
-        .pipe(concatenator(locale))
-        .pipe(gulp.dest(__dirname + '/build/templates'));
+  var defaultTemplates, themeTemplates;
+
+  _.each(['pages', 'partials'], function(type) {
+    _.each(themes, function(theme) {
+      _.each(supportedLocales, function(locale) {
+        defaultTemplates = sharedTemplates[type];
+        themeTemplates   = templatesDir + '/' + theme + '/' + type + '/**/*.html';
+
+        gulp.src([defaultTemplates, themeTemplates])
+            .pipe(compiler(locale))
+            .pipe(concatenator(locale, theme, type))
+            .pipe(gulp.dest(__dirname + '/build/templates'));
+      });
+    });
   });
 });
 
@@ -83,7 +110,7 @@ function compiler(locale) {
   });
 }
 
-function concatenator(locale) {
+function concatenator(locale, theme, type) {
   var templates = {};
 
   return through(filesBuffer, endStream);
@@ -110,7 +137,7 @@ function concatenator(locale) {
 
     this.emit('data', new File({
       cwd:      './',
-      path:     './' + locale + '.js',
+      path:     './' + theme + '/' + locale + '/' + type + '.js',
       contents: new Buffer(lines.join('\n'))
     }));
 

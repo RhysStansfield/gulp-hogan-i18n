@@ -1,0 +1,28 @@
+<body>
+  {{> head}}
+
+  <header>
+    <h3>{{_i}}module.available-stores{{/i}}</h3>
+    <h4>{{_i}}module.welcome-to{{/i}} {{_i}}module.red{{/i}} {{_i}}module.store{{/i}}</h4>
+  </header>
+
+  <hr/>
+
+  <ul>
+    <li><a href="/">/</a></li>
+    {{#availableStores}}
+      <li><a href="/{{.}}/">{{.}}</a></li>
+    {{/availableStores}}
+  </ul>
+
+  <hr/>
+
+  <h3>{{_i}}module.pages{{/i}}</h3>
+
+  <hr/>
+
+  <ul>
+    <li><a href="/{{#segment}}{{segment}}/{{/segment}}hello">{{_i}}module.hello{{/i}}</a></li>
+    <li><a href="/{{#segment}}{{segment}}/{{/segment}}weekdays">{{_i}}module.weekdays{{/i}}</a></li>
+  </ul>
+</body>

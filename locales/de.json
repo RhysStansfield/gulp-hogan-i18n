@@ -16,6 +16,11 @@
     "colour": "Farbe",
     "available-stores": "Verfügbar Speichert",
     "pages": "Seiten",
-    "home": "Zuhause"
+    "home": "Zuhause",
+    "welcome-to": "Willkommen zu",
+    "red": "Rot",
+    "blue": "Blau",
+    "store": "Geschäft",
+    "default": "Standard"
   }
 }

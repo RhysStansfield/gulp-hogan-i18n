@@ -16,6 +16,11 @@
     "colour": "cor",
     "available-stores": "Lojas Disponíveis",
     "pages": "Páginas",
-    "home": "Casa"
+    "home": "Casa",
+    "welcome-to": "Bem-vindo ao",
+    "red": "Vermelho",
+    "blue": "Azul",
+    "store": "Armazenar",
+    "default": "Padrão"
   }
 }

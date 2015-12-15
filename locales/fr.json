@@ -16,6 +16,11 @@
     "colour": "couleur",
     "available-stores": "Magasins Disponibles",
     "pages": "Pages",
-    "home": "Domicile"
+    "home": "Domicile",
+    "welcome-to": "Bienvenue à",
+    "red": "Rouge",
+    "blue": "Bleu",
+    "store": "Boutique",
+    "default": "Défaut"
   }
 }

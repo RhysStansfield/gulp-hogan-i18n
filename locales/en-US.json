@@ -16,6 +16,11 @@
     "colour": "color",
     "available-stores": "Available Stores",
     "pages": "Pages",
-    "home": "Home"
+    "home": "Home",
+    "welcome-to": "Welcome to",
+    "red": "Red",
+    "blue": "Blue",
+    "store": "Store",
+    "default": "Default"
   }
 }

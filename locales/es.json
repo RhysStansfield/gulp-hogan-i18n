@@ -16,6 +16,11 @@
     "colour": "color",
     "available-stores": "Tiendas Disponibles",
     "pages": "Páginas",
-    "home": "Casa"
+    "home": "Casa",
+    "welcome-to": "Bienvenido a",
+    "red": "Rojo",
+    "blue": "Azul",
+    "store": "Almacenar",
+    "default": "Defecto"
   }
 }
